@@ -1,10 +1,12 @@
 import Stripe from "stripe";
-import NextAuth from "next-auth";
+import NextAuth, { User } from "next-auth";
 import { PrismaClient } from "@prisma/client";
 import GitHubProvider from "next-auth/providers/github";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 const prisma = new PrismaClient();
+
+export const getSessionOptions = { secret: process.env.AUTH_SECRET };
 
 export default NextAuth({
   debug: true,
